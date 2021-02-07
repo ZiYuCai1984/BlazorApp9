@@ -1,55 +1,62 @@
 @page "/fetchdata"
-@inject HttpClient Http
+
+@inherits DisposableComponent
+
+@inject ISampleData SampleData
+@inject IMapper Mapper
 
 <h1>Weather forecast</h1>
 
 <p>This component demonstrates fetching data from the server.</p>
 
-@if (_forecasts == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var forecast in _forecasts)
-            {
-                <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.TemperatureC</td>
-                    <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+<table class="table">
+    <thead>
+    <tr>
+        <th>City(@Forecasts.Count)</th>
+        <th>Date</th>
+        <th>Temp. (C)</th>
+        <th>Temp. (F)</th>
+        <th>Summary</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var forecast in Forecasts)
+    {
+        <tr>
+            <td>@forecast.City</td>
+            <td>@forecast.Date</td>
+            <td>@forecast.TemperatureC</td>
+            <td>@(32 + (int) (forecast.TemperatureC / 0.5556))</td>
+            <td>@forecast.Summary</td>
+        </tr>
+    }
+    </tbody>
+</table>
 
 @code {
-    private WeatherForecast[] _forecasts;
+    private IList<WeatherForecast> Forecasts { get; } = new List<WeatherForecast>();
 
-    protected override async Task OnInitializedAsync()
+    protected override void OnInitialized()
     {
-        _forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
+#pragma warning disable 4014
+        Task.Run(async () =>
+        {
+            while (!IsDisposed)
+            {
+                try
+                {
+                    var forecasts = new List<WeatherForecast>(await SampleData.GetWeatherForecasts());
+                    Mapper.Map(forecasts, Forecasts);
+                    InvokeAsync(StateHasChanged);
+
+                    await Task.Delay(2000);
+                }
+                catch
+                {
+                    //ignore
+                }
+            }
+        });
     }
 
-    public class WeatherForecast
-    {
-        public DateTime Date { get; set; }
-
-        public int TemperatureC { get; set; }
-
-        public string Summary { get; set; }
-
-        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-    }
 }

@@ -1,0 +1,52 @@
+﻿@page "/"
+@page "/home"
+
+@inject IDocumentIndexProxy DocumentIndexProxy
+
+
+<div class="form-check-inline">
+    <label class="form-check-label">
+        <input type="checkbox" class="form-check-input" @bind-value="@IsHideLockedDocument">Hide locked document
+    </label>
+</div>
+
+
+@foreach (var d in Documents)
+{
+    @if (!IsHideLockedDocument || !d.IsLocked)
+    {
+        <DocumentPreview Document="@d"/>
+    }
+}
+
+
+
+@code{
+
+
+    private bool _isHideLockedDocument;
+
+    private bool IsHideLockedDocument
+    {
+        get => _isHideLockedDocument;
+        set
+        {
+            if (_isHideLockedDocument == value)
+            {
+                return;
+            }
+
+            _isHideLockedDocument = value;
+            StateHasChanged();
+        }
+    }
+
+
+    public Document[] Documents { get; set; } = new Document[0];
+
+    protected override async Task OnInitializedAsync()
+    {
+        Documents = await DocumentIndexProxy.GetDocumentsAsync();
+    }
+
+}

@@ -1,15 +1,21 @@
 ﻿@inherits LayoutComponentBase
 
+@* ReSharper disable Html.PathError *@
+
 <div class="sidebar">
-    <NavMenu />
+    <NavMenu/>
 </div>
 
 <div class="main">
-    <div class="top-row px-4">
-        <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
+    <div class="px-4 top-row">
+        <span>
+            Test data
+        </span>
+        <a href="./aboutme" target="_blank" class="ml-md-auto">About me</a>
     </div>
 
-    <div class="content px-4">
+    <div class="content px-4" style="overflow-y: scroll;height: calc(100% - 3.5rem);">
         @Body
     </div>
+    
 </div>

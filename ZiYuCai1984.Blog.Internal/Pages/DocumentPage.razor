@@ -1,0 +1,71 @@
+﻿@page "/document/{title}"
+
+
+@inject IDocumentIndexProxy DocumentIndexProxy
+
+
+@if (Document == null)
+{
+    <p>
+        Not found
+    </p>
+}
+else
+{
+    <h5>
+        @Document.Title
+    </h5>
+
+    <p>
+        @Document.CreateTime
+    </p>
+
+
+    <div>
+        @foreach (var keyword in Document.Keywords)
+        {
+            <span>@keyword</span>
+            @if (Document.Keywords.Last() != keyword)
+            {
+                <span>,</span>
+            }
+        }
+    </div>
+
+    <p>
+        @Document.Path
+    </p>
+
+
+    <p>
+        @((MarkupString) Document.ContentRaw)
+    </p>
+}
+
+
+
+
+
+@code {
+#nullable disable
+
+
+
+
+
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+
+
+    private Document Document { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        Document = await DocumentIndexProxy.GetDocumentAsync(Title);
+
+
+        await base.OnParametersSetAsync();
+    }
+
+
+}

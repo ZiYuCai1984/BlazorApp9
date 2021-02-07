@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<ItemGroup>
+		<PackageReference Include="Bogus" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\ZiYuCai1984.Blog.DocumentIndex.Proxy.Abstractions\ZiYuCai1984.Blog.DocumentIndex.Proxy.Abstractions.csproj" />
+	</ItemGroup>
+
+</Project>

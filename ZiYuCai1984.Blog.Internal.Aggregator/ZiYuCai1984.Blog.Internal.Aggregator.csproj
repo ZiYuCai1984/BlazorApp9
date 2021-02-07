@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\ZiYuCai1984.Blog.DocumentIndex.Proxy.Abstractions\ZiYuCai1984.Blog.DocumentIndex.Proxy.Abstractions.csproj" />
+	  <ProjectReference Include="..\ZiYuCai1984.Blog.DocumentIndex.Proxy.Faker\ZiYuCai1984.Blog.DocumentIndex.Proxy.Faker.csproj" />
+	</ItemGroup>
+
+</Project>
