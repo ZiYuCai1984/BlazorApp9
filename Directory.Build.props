@@ -1,0 +1,13 @@
+<Project>
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<RazorLangVersion>3.0</RazorLangVersion>
+		<Version>$([System.DateTime]::Now.ToString("yyyy-MM-dd-HH-mm-ss"))</Version>
+		<Ouputpath>..\bin</Ouputpath>
+		<Nullable>enable</Nullable>
+		<Optimize>true</Optimize>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	</PropertyGroup>
+
+</Project>

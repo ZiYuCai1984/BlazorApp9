@@ -1,0 +1,1 @@
+powershell.exe ./%~n0.ps1

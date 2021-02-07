@@ -1,0 +1,20 @@
+name: Publish
+
+on:
+  push:
+  schedule:
+    - cron: '0 22 * * *'
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: publish
+      env:
+        TOKEN_AUTO_PUSH: '${{ secrets.TOKEN_AUTO_PUSH}}'
+      run: powershell.exe ./publish.ps1

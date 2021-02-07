@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30803.129
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZiYuCai1984.Blog.Internal", "ZiYuCai1984.Blog.Internal\ZiYuCai1984.Blog.Internal.csproj", "{48C59057-A87E-4AD0-A4B8-3E6B97BB1103}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DFD2E9FE-43D2-4487-AC5D-964CD5F8FD27}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+		publish.cmd = publish.cmd
+		publish.ps1 = publish.ps1
+		pull.bat = pull.bat
+		push.cmd = push.cmd
+		.github\workflows\push.yml = .github\workflows\push.yml
+		README.md = README.md
+		watch.cmd = watch.cmd
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{48C59057-A87E-4AD0-A4B8-3E6B97BB1103}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48C59057-A87E-4AD0-A4B8-3E6B97BB1103}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48C59057-A87E-4AD0-A4B8-3E6B97BB1103}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48C59057-A87E-4AD0-A4B8-3E6B97BB1103}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9C80D54D-4C26-43B0-BC9E-5CBDF3590BB2}
+	EndGlobalSection
+EndGlobal

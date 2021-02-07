@@ -1,0 +1,28 @@
+﻿@page "/"
+@using HeyRed.MarkdownSharp
+
+@inject HttpClient Http
+
+<Document Content="@Content"/>
+
+
+@code{
+
+    public string? Content { get; set; }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        var options = new MarkdownOptions
+        {
+            AutoHyperlink = true,
+            LinkEmails = true,
+            QuoteSingleLine = true,
+            StrictBoldItalic = true
+        };
+
+        var markdown = new Markdown(options);
+        Content = markdown.Transform(await Http.GetStringAsync("css/open-iconic/README.md"));
+    }
+
+}
