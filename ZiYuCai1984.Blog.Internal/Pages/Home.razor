@@ -3,12 +3,16 @@
 
 @inject IDocumentIndexProxy DocumentIndexProxy
 
+<div class="pb-2">
+    <button class="btn btn-primary" @onclick="@(() => throw new Exception())">throw new Exception</button>
 
-<div class="form-check-inline">
-    <label class="form-check-label">
-        <input type="checkbox" class="form-check-input" @bind-value="@IsHideLockedDocument">Hide locked document
-    </label>
+    <div class="form-check-inline">
+        <label class="form-check-label">
+            <input type="checkbox" class="form-check-input" @bind-value="@IsHideLockedDocument">Hide locked document
+        </label>
+    </div>
 </div>
+
 
 
 @foreach (var d in Documents)

@@ -1,14 +1,14 @@
 ﻿<div>
 
-    <div class="d-flex z-index-1">
+    <div class="d-flex">
         <span class="oi @(Document.IsLocked ? "oi-lock-locked" : "")" style="margin-right: 16px"></span>
-        <a class="flex-grow-1 " href="@Link">@Document.Title</a>
-        <span>
+        <a class="flex-grow-1 text-truncate" href="@Link">@Document.Title</a>
+        <span class="text-nowrap">
             @Document.CreateTime
         </span>
     </div>
 
-    <p>
+    <p style="-webkit-box-orient: vertical; -webkit-line-clamp: 3; display: -webkit-box; overflow: hidden;">
         @Document.Summary
     </p>
 
